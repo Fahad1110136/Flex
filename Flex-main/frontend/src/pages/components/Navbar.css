@@ -1,0 +1,51 @@
+/* src/components/Navbar.css */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background: rgba(15, 23, 42, 0.95); /* same as background, with opacity */
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    z-index: 1000; /* Make sure it stays on top */
+  }
+  
+  .logo h2 {
+    color: #FFD700;
+    font-size: 1.8rem;
+    margin: 0;
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: 25px;
+  }
+  
+  .nav-btn {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-btn:hover {
+    color: #00d9ff;
+  }
+  
+  /* Optional for smaller screens */
+  @media (max-width: 768px) {
+    .navbar {
+      padding: 0 20px;
+    }
+  
+    .nav-btn {
+      font-size: 1rem;
+    }
+  }
+  

@@ -1,0 +1,108 @@
+/* Global body styles */
+body {
+    background-color: #0f172a; /* Dark background color */
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  /* Main container for student portal */
+  .student-portal {
+    max-width: 1000px;
+    width: 100%;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.1); /* Transparent white background */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 70vh; /* Ensure it fills most of the screen */
+    backdrop-filter: blur(8px); /* Blurred background for the container */
+    position: relative; /* Required for z-index to work */
+    margin-top: 80px;
+  }
+  
+  /* Heading styles */
+  h1 {
+    color: #FFD700; /* Gold color */
+    font-size: 2.8rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+  
+  /* Paragraph styles */
+  p {
+    font-size: 1.2rem;
+    color: #ccc; /* Light grey for text */
+    margin-bottom: 40px;
+    line-height: 1.6;
+  }
+  
+  /* Button container */
+  .student-portal-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* Align buttons vertically */
+    gap: 20px;
+    z-index: 2; /* Ensure buttons are in front of the backdrop */
+    position: relative; /* Ensure they are on top of the background */
+  }
+  
+  /* Base button styles */
+  .student-btn {
+    padding: 12px 25px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 8px;
+    display: inline-block;
+    transition: all 0.3s ease;
+    min-width: 200px;
+    text-align: center;
+    position: relative; /* Ensure buttons appear on top */
+  }
+  
+  /* Register button styles (green) */
+  .student-btn.register-btn {
+    background-color: #2ecc71; /* Green */
+    color: white;
+    border: none;
+  }
+  
+  .student-btn.register-btn:hover {
+    background-color: #27ae60;
+    transform: scale(1.05);
+  }
+  
+  /* Login button styles (blue gradient) */
+  .student-btn.login-btn {
+    background: linear-gradient(135deg, #3498db, #6dd5fa); /* Blue gradient */
+    color: white;
+    border: none;
+  }
+  
+  .student-btn.login-btn:hover {
+    transform: scale(1.05);
+    background: linear-gradient(135deg, #2980b9, #3498db); /* Darker blue gradient on hover */
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .student-portal {
+      padding: 20px;
+    }
+  
+    .student-portal-actions {
+      gap: 10px; /* Reduced gap on small screens */
+    }
+  }
+  

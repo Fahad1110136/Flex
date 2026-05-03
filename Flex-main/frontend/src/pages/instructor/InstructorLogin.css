@@ -1,0 +1,103 @@
+/* src/pages/student/Login.css */
+
+/* Background */
+body {
+    background-color: #0f172a;
+    font-family: "Poppins", sans-serif;
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    width: 100%; /* Ensure body takes up full width */
+    box-sizing: border-box; /* Ensure padding doesn't add extra width */
+}
+
+/* Container for login */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%; /* Ensure container takes full width */
+    padding: 0 20px; /* Add padding for responsive margins */
+    box-sizing: border-box;
+    overflow-x: auto; /* Allow scrolling if necessary */
+}
+
+/* The login box */
+.login-box {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 600px; /* Increased width of the login box */
+    min-width: 450px; /* Ensures it doesn't shrink too much on small screens */
+    text-align: center;
+    backdrop-filter: blur(8px);
+    box-sizing: border-box;
+}
+
+/* Title */
+h2 {
+    color: #FFD700;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* Form and inputs */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.input-group {
+    position: relative;
+}
+
+input {
+    padding: 12px;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    background: #1a202c;
+    color: white;
+    margin-bottom: 10px;
+}
+
+input::placeholder {
+    color: #ccc;
+}
+
+/* Submit button */
+.login-btn {
+    padding: 12px;
+    background: linear-gradient(135deg, #3498db, #6dd5fa);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.login-btn:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, #2980b9, #3498db);
+}
+
+/* Forgot password link */
+.forgot-password {
+    margin-top: 15px;
+}
+
+.forgot-password a {
+    color: #FFD700;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+
+.forgot-password a:hover {
+    text-decoration: underline;
+}

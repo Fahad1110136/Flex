@@ -1,0 +1,83 @@
+/* src/pages/student/Register.css */
+
+/* Background */
+body {
+    background-color: #0f172a;
+    font-family: "Poppins", sans-serif;
+}
+
+/* Container for register */
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    padding: 0 20px; /* Add padding for responsive margins */
+    box-sizing: border-box;
+    overflow-x: auto; /* Allow scrolling if necessary */
+    margin-top: 100px;
+}
+
+/* The register box */
+.register-box {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 600px; /* Increased width of the register box */
+    min-width: 450px; /* Ensures it doesn't shrink too much on small screens */
+    text-align: center;
+    backdrop-filter: blur(8px);
+    box-sizing: border-box;
+}
+
+/* Title */
+h2 {
+    color: #FFD700;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* Form and inputs */
+.register-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.input-group {
+    position: relative;
+}
+
+input {
+    padding: 12px;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    background: #1a202c; /* Dark background for inputs */
+    color: white;
+    margin-bottom: 10px;
+}
+
+input::placeholder {
+    color: #ccc;
+}
+
+/* Submit button */
+.register-btn {
+    padding: 12px;
+    background: linear-gradient(135deg, #3498db, #6dd5fa);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.register-btn:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, #2980b9, #3498db);
+}

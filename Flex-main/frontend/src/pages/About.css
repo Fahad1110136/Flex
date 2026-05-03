@@ -1,0 +1,80 @@
+.about-container {
+  padding: 60px 20px;  /* Increased padding for better spacing */
+  background-color: #0f172a;
+  color: #f1f5f9;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+  margin-top: 40px;  /* Added top margin */
+}
+
+.about-header h1 {
+  font-size: 3rem;
+  color: #facc15; /* Golden Yellow */
+  margin-bottom: 15px;  /* Adjusted bottom margin */
+}
+
+.tagline {
+  font-size: 1.2rem;
+  color: #94a3b8;
+  margin-bottom: 30px;
+}
+
+.about-description p {
+  font-size: 1.1rem;
+  max-width: 800px;
+  margin: 10px auto;
+  opacity: 0.85;
+  line-height: 1.6;
+  text-align: justify; /* Improved text alignment */
+}
+
+.team-section {
+  margin-top: 50px;
+}
+
+.team-section h2 {
+  font-size: 2rem;
+  color: #38bdf8;
+  margin-bottom: 20px;
+}
+
+.team-cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;  /* Increased gap for better card spacing */
+}
+
+.team-member {
+  background: #1e293b;
+  border-radius: 12px;
+  padding: 20px;
+  width: 250px;  /* Increased width for better readability */
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.team-member:hover {
+  transform: translateY(-8px); /* Increased hover effect for more impact */
+}
+
+.team-member h3 {
+  color: #fbbf24;
+  margin-bottom: 10px;  /* Increased margin for spacing */
+}
+
+.team-member p {
+  color: #cbd5e1;
+  font-size: 0.95rem;
+  text-align: center; /* Centered text for consistency */
+}
+
+.team-credit {
+  margin-top: 40px;
+  font-style: italic;
+  color: #94a3b8;
+  font-size: 1.1rem; /* Increased font size for better emphasis */
+}

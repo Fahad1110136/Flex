@@ -1,0 +1,178 @@
+.student-dashboard {
+  max-width: 1000px;
+  margin: 120px auto 40px;
+  padding: 25px;
+  background: rgba(255, 255, 255, 0.07);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  color: #fff;
+  animation: dashboardFadeIn 0.8s ease-in-out forwards;
+  position: relative;
+}
+
+.student-dashboard h1 {
+  font-size: 2.3rem;
+  color: #FFD700;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.student-dashboard p {
+  font-size: 1.1rem;
+  color: #cccccc;
+  margin-bottom: 35px;
+}
+
+.dashboard-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.dashboard-card {
+  background: rgba(255, 255, 255, 0.09);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  padding: 20px;
+  backdrop-filter: blur(6px);
+  text-align: left;
+  cursor: pointer;
+  transform: translateY(40px) scale(0.95);
+  opacity: 0;
+  cursor: pointer;
+}
+
+.dashboard-card-animated {
+  animation: cardSlideIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.dashboard-card-animated:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.dashboard-card-animated:nth-child(2) {
+  animation-delay: 0.3s;
+}
+.dashboard-card-animated:nth-child(3) {
+  animation-delay: 0.5s;
+}
+.dashboard-card-animated:nth-child(4) {
+  animation-delay: 0.7s;
+}
+
+
+.dashboard-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35),
+              0 0 10px rgba(0, 217, 255, 0.3);
+  transition: transform 0.4s cubic-bezier(0.25, 1.5, 0.5, 1),
+              box-shadow 0.3s ease;
+}
+
+.dashboard-card h2 {
+  font-size: 1.2rem;
+  color: #00d9ff;
+  margin-bottom: 6px;
+  transition: color 0.3s;
+}
+
+.dashboard-card p {
+  font-size: 0.95rem;
+  color: #e0e0e0;
+}
+
+/* Logout button */
+.logout-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: #ff5b5b;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.logout-btn:hover {
+  background: #e03e3e;
+}
+
+/* Animations */
+@keyframes dashboardFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes cardSlideIn {
+  0% {
+    transform: translateY(40px) scale(0.95);
+    opacity: 0;
+  }
+  60% {
+    transform: translateY(-6px) scale(1.01);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0px) scale(1);
+    opacity: 1;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .student-dashboard {
+    margin-top: 80px;
+    padding: 20px;
+  }
+
+  .dashboard-card {
+    padding: 16px;
+  }
+
+  .student-dashboard h1 {
+    font-size: 2rem;
+  }
+
+  .student-dashboard p {
+    font-size: 1rem;
+  }
+
+  .dashboard-card h2 {
+    font-size: 1.1rem;
+  }
+
+  .dashboard-card p {
+    font-size: 0.9rem;
+  }
+
+  .logout-btn {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+  }
+}
+
+.logout-button {
+  margin-top: 60px;
+  padding: 12px 28px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #ff4d4d;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+  background-color: #e60000;
+}

@@ -1,0 +1,134 @@
+.update-student-container {
+  max-width: 600px;
+  margin: 120px auto 40px;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.07);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  color: #fff;
+  animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+.update-student-container h2 {
+  font-size: 2rem;
+  color: yellow;
+  margin-bottom: 24px;
+  text-transform: uppercase;
+}
+
+.update-student-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.update-student-form input {
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  outline: none;
+  backdrop-filter: blur(6px);
+  transition: border-color 0.3s ease;
+}
+
+.update-student-form input::placeholder {
+  color: #cccccc;
+}
+
+.update-student-form input:focus {
+  border-color: #00d9ff;
+}
+
+.update-student-form button {
+  padding: 12px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+
+/* Back Button */
+.back-button-admin {
+  margin-top: 14px;
+  padding: 10px 24px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #28a745; /* Green */
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 0 10px #00cc66 !important; /* green glow */
+}
+
+.back-button-admin:hover {
+  background-color: #218838;
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .update-student-container {
+    margin-top: 80px;
+    padding: 20px;
+  }
+
+  .update-student-container h2 {
+    font-size: 1.6rem;
+  }
+
+  .update-student-form input,
+  .update-student-form button {
+    font-size: 0.95rem;
+  }
+}
+.update-student-form .update-button {
+  padding: 12px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #007bff; /* Blue */
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 10px #007bff !important; /* green glow */}
+
+.update-student-form .back-button-admin-admin {
+  margin-top: 14px;
+  padding: 10px 24px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #28a745; /* Green */
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 10px #00cc66 !important; /* green glow */
+}
+
+.update-student-form .back-button-admin-admin:hover {
+  background-color: #218838;
+  box-shadow: 0 0 10px #00cc66 !important; /* green glow */
+}

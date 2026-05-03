@@ -1,0 +1,102 @@
+/* src/pages/student/StudentCourses.css */
+
+.student-courses {
+    padding: 4rem 2rem 2rem;
+    text-align: center;
+    animation: fadeIn 0.4s ease-in-out;
+    margin-top: 100px; /* Added margin-top to prevent overlap with the navbar */
+  }
+  
+  .student-courses h1 {
+    margin-top: 0; /* Reset any top margin */
+  }
+  
+  .courses-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+    overflow: visible; /* Prevents overflowing elements */
+  }
+  
+  .course-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: 1px solid #eee;
+    opacity: 1;
+    transform: translateY(0); /* No translation by default */
+    transition: all 0.3s ease-in-out; /* Smooth transition for everything */
+  }
+  
+  /* Hover Effect */
+  .course-card:hover {
+    transform: translateY(-10px); /* Moves the card up */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15); /* Larger shadow on hover */
+    border: 1px solid #a2b9ff; /* Border color change on hover */
+  }
+  
+  .course-card h2 {
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    color: #2c3e50;
+  }
+  
+  .course-card p {
+    margin: 0.25rem 0;
+    color: #555;
+  }
+  
+  .error {
+    color: #e74c3c;
+    font-weight: 500;
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* Back Button Style */
+.back-button {
+    display: inline-block;
+    padding: 0.8rem 1.2rem;
+    margin-bottom: 1rem;
+    background-color: #3498db;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .back-button:hover {
+    background-color: #2980b9;
+    color: white;
+  }
+  
+  .drop-button {
+    background-color: #e74c3c; /* Red background */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    font-size: 0.95rem;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .drop-button:hover {
+    background-color: #c0392b; 
+  }
+  .toast-message {
+    color: black !important;
+  }
+  
