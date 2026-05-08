@@ -152,6 +152,68 @@ BEGIN
     ORDER BY c.course_name
 END
 GO
+ALTER PROCEDURE GET_COURSES_OFFERED
+    @rollNo CHAR(8)
+AS
+BEGIN
+    DECLARE @studentSemester INT
+    SELECT @studentSemester = current_semester
+    FROM Students
+    WHERE roll_no = @rollNo
+    SELECT 
+        c.course_code, 
+        c.course_name, 
+        c.course_dep, 
+        c.credit_hr, 
+        c.course_type, 
+        c.course_semester,
+        cs.available_seats
+    FROM Courses c
+    JOIN Course_Sections cs 
+        ON c.course_code = cs.course_code
+    WHERE 
+        c.course_semester = @studentSemester + 1
+        AND c.course_code NOT IN (
+            SELECT course_code 
+            FROM Enrollments 
+            WHERE roll_no = @rollNo
+        )
+        AND cs.available_seats > 0
+    ORDER BY c.course_name
+END
+GO
+ALTER PROCEDURE GET_COURSES_OFFERED
+    @rollNo CHAR(8)
+AS
+BEGIN
+    DECLARE @studentSemester INT
+    SELECT @studentSemester = current_semester
+    FROM Students
+    WHERE roll_no = @rollNo
+
+    SELECT 
+        c.course_code, 
+        c.course_name, 
+        c.course_dep, 
+        c.credit_hr, 
+        c.course_type, 
+        c.course_semester,
+        cs.available_seats,
+        cs.section_id
+    FROM Courses c
+    JOIN Course_Sections cs 
+        ON c.course_code = cs.course_code
+    WHERE 
+        c.course_semester = @studentSemester + 1
+        AND c.course_code NOT IN (
+            SELECT course_code 
+            FROM Enrollments 
+            WHERE roll_no = @rollNo
+        )
+        AND cs.available_seats > 0
+    ORDER BY c.course_name
+END
+GO
 
 CREATE PROCEDURE ENROLL_STUDENT
     @rollNo CHAR(8),
@@ -513,3 +575,5 @@ VALUES
 ('21L-0432', 'CS101')
 -- Example of Increments in semester (if needed)
 EXEC INCREMENT_SEM
+-- Test procedure directly
+EXEC GET_COURSES_OFFERED @rollNo = '23L-1234';

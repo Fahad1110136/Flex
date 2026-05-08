@@ -38,14 +38,31 @@ const StudentCourseOffer = () => {
         const rollNo = decoded.rollNo;
         setStudentName(decoded.name || "Student");
 
-        const coursesRes = await fetch(
-          `${import.meta.env.VITE_API_URL}/api/students/${rollNo}/courses-offered`,
-          { method: "GET", credentials: "include" }
-        );
-        const coursesData = await coursesRes.json();
-        if (!coursesRes.ok) throw new Error(coursesData.message || "❌ Failed to fetch courses");
-        setCourses(coursesData);
+        // const coursesRes = await fetch(
+        //   `${import.meta.env.VITE_API_URL}/api/students/${rollNo}/courses-offered`,
+        //   { method: "GET", credentials: "include" }
+        // );
+        // const coursesData = await coursesRes.json();
+        // if (!coursesRes.ok) throw new Error(coursesData.message || "❌ Failed to fetch courses");
+        // setCourses(coursesData);
 
+// new function 
+        // In StudentCourseOffer.jsx - replace the courses fetch block
+const coursesRes = await fetch(
+  `${import.meta.env.VITE_API_URL}/api/students/${rollNo}/courses-offered`,
+  { method: "GET", credentials: "include" }
+);
+const coursesData = await coursesRes.json();
+
+if (!coursesRes.ok) {
+  // ✅ Show the actual backend message instead of generic error
+  toast.error(coursesData.message || "❌ Failed to fetch courses");
+  setLoading(false);
+  return;
+}
+setCourses(coursesData);
+
+// end
         const creditRes = await fetch(
           `${import.meta.env.VITE_API_URL}/api/students/${rollNo}/credit-hours`,
           { method: "GET", credentials: "include" }
@@ -135,6 +152,7 @@ const StudentCourseOffer = () => {
                 <p><strong>Credit Hours:</strong> {course.credit_hr}</p>
                 <p><strong>Course Type:</strong> {course.course_type}</p>
                 <p><strong>Semester:</strong> {course.course_semester}</p>
+                <p><strong>Section:</strong> {course.section_id}</p>
                 <p><strong>Seats Available:</strong> {course.available_seats}</p>
                 <button
                   className="register-button"

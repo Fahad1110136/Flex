@@ -65,14 +65,16 @@ async function forgotPassword(req, res) {
 
         const tempPassword = Math.random().toString(36).slice(-8);
         const hashedPassword = await bcrypt.hash(tempPassword, 10);
+        
         await studentModel.updatePassword(rollNo, hashedPassword);
 
-        await sendResetEmail(student.email, student.name, tempPassword);
-
-        res.json({ message: "✅ Temporary password sent to your email" });
+        res.json({ 
+            message: "✅ Password reset successfullly", 
+            tempPassword: tempPassword // This is the key change
+        });
     } catch (error) {
         console.error("❌ Password reset error:", error);
-        res.status(500).json({ message: "❌ Password reset failed", error: error.message || error });
+        res.status(500).json({ message: "❌ Password reset failed", error: error.message });
     }
 }
 
