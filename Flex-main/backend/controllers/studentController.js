@@ -144,15 +144,27 @@ async function dropCourse(req, res) {
     }
 }
 
+// async function enrollCourse(req, res) {
+//     try {
+//       const { rollNo, courseCode } = req.params;
+//       res.json(await studentModel.enrollCourse(rollNo, courseCode));
+//     } catch (error) {
+//       console.error("❌ Error enrolling course:", error);
+//       res.status(500).json({ message: "❌ Error enrolling in course" });
+//     }
+//   }
+/////// new
 async function enrollCourse(req, res) {
-    try {
-      const { rollNo, courseCode } = req.params;
-      res.json(await studentModel.enrollCourse(rollNo, courseCode));
-    } catch (error) {
-      console.error("❌ Error enrolling course:", error);
-      res.status(500).json({ message: "❌ Error enrolling in course" });
-    }
+  try {
+    const { rollNo, courseCode } = req.params;
+    const result = await studentModel.enrollCourse(rollNo, courseCode);
+    res.json(result);
+  } catch (error) {
+    console.error("❌ Error enrolling course:", error);
+    res.status(400).json({ message: error.message });
   }
+}
+///////
   
 
 async function getStudentProfile(req, res) {

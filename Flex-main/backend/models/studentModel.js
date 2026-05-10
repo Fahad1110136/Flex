@@ -100,22 +100,41 @@ const studentModel = {
     }
   },
   
+  // enrollCourse: async (rollNo, courseCode) => {
+  //   try {
+  //     const pool = await poolPromise;
+  
+  //     await pool
+  //       .request()
+  //       .input("rollNo", sql.Char(8), rollNo)
+  //       .input("courseCode", sql.VarChar(9), courseCode)
+  //       .execute("ENROLL_STUDENT");
+  
+  //     return { message: "✅ Course enrolled successfully" };
+  //   } catch (error) {
+  //     console.error("❌ Error enrolling course:", error);
+  //     return { message: `❌ ${error.originalError?.message || "Internal server error"}` };
+  //   }
+  // },
+  //////// new
   enrollCourse: async (rollNo, courseCode) => {
-    try {
-      const pool = await poolPromise;
-  
-      await pool
-        .request()
-        .input("rollNo", sql.Char(8), rollNo)
-        .input("courseCode", sql.VarChar(9), courseCode)
-        .execute("ENROLL_STUDENT");
-  
-      return { message: "✅ Course enrolled successfully" };
-    } catch (error) {
-      console.error("❌ Error enrolling course:", error);
-      return { message: `❌ ${error.originalError?.message || "Internal server error"}` };
-    }
-  },
+  try {
+    const pool = await poolPromise;
+
+    await pool
+      .request()
+      .input("rollNo", sql.Char(8), rollNo.trim())
+      .input("courseCode", sql.VarChar(9), courseCode.trim())
+      .execute("ENROLL_STUDENT");
+
+    return { message: "✅ Course enrolled successfully" };
+  } catch (error) {
+    console.error("❌ Error enrolling course:", error);
+    throw new Error(error.originalError?.message || "Internal server error");
+  }
+},
+  ////////
+
   getCurrentCreditHours: async (rollNo) => {
     const pool = await poolPromise;
     try {

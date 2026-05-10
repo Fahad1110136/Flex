@@ -128,7 +128,7 @@ setCourses(coursesData);
               }}
             ></div>
           </div>
-          <p>{currentCreditHours} / {MAX_CREDIT_HOURS} Credit Hours</p>
+          <p>Maximum {MAX_CREDIT_HOURS} Credit Hours Allowed</p>
         </div>
 
         {loading ? (
