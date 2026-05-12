@@ -978,7 +978,7 @@ EXEC GET_COURSES_OFFERED @rollNo = '23L-1234'
 SELECT roll_no, section_id FROM Students WHERE roll_no = '23L-0533'
 SELECT * FROM Course_Sections WHERE course_code = 'EN102'
 -- reset registration
-drop table Registration_period
+DROP TABLE Registration_period
 -- Transaction used
 -- 1
 GO
