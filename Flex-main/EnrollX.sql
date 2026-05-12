@@ -977,3 +977,121 @@ EXEC GET_COURSES_OFFERED @rollNo = '23L-1234'
 -- when you are in any other course but want to enroll in others course section  
 SELECT roll_no, section_id FROM Students WHERE roll_no = '23L-0533'
 SELECT * FROM Course_Sections WHERE course_code = 'EN102'
+-- reset registration
+drop table Registration_period
+-- Transaction used
+-- 1
+GO
+ALTER PROCEDURE GET_ENROLLED_COURSES
+    @rollNo CHAR(8)
+AS
+BEGIN
+    SET NOCOUNT ON
+    BEGIN TRANSACTION       
+    BEGIN TRY
+        IF NOT EXISTS (SELECT 1 FROM Students WHERE roll_no = @rollNo)
+        BEGIN
+            ROLLBACK TRANSACTION;
+            RAISERROR('Student not found.', 16, 1)
+            RETURN
+        END
+        SELECT
+            E.course_code,
+            C.course_name,
+            C.course_dep,
+            C.credit_hr,
+            C.course_type,
+            C.course_semester AS semester
+        FROM Enrollments E
+        JOIN Courses C ON E.course_code = C.course_code
+        WHERE E.roll_no = @rollNo
+        ROLLBACK TRANSACTION
+    END TRY
+    BEGIN CATCH
+        IF @@TRANCOUNT > 0
+            ROLLBACK TRANSACTION
+        DECLARE @ErrMsg NVARCHAR(4000) = ERROR_MESSAGE()
+        DECLARE @ErrSev INT = ERROR_SEVERITY()
+        RAISERROR(@ErrMsg, @ErrSev, 1)
+    END CATCH
+END
+GO
+-- 2
+ALTER PROCEDURE GET_CREDITHR
+    @rollNo CHAR(8)
+AS
+BEGIN
+    SET NOCOUNT ON
+    SET XACT_ABORT ON
+    BEGIN TRANSACTION   
+    BEGIN TRY
+        DECLARE @currentSemester INT
+        SELECT @currentSemester = current_semester
+        FROM Students
+        WHERE roll_no = @rollNo
+        IF @currentSemester IS NULL
+        BEGIN
+            ROLLBACK TRANSACTION
+            RAISERROR('Student not found.', 16, 1)
+            RETURN
+        END
+        SELECT SUM(C.credit_hr) AS totalCredits
+        FROM Enrollments E
+        JOIN Courses C ON E.course_code = C.course_code
+        WHERE E.roll_no = @rollNo
+          AND C.course_semester = @currentSemester
+        ROLLBACK TRANSACTION
+    END TRY
+    BEGIN CATCH
+        IF @@TRANCOUNT > 0
+            ROLLBACK TRANSACTION
+        DECLARE @ErrMsg NVARCHAR(4000) = ERROR_MESSAGE()
+        DECLARE @ErrSev INT = ERROR_SEVERITY()
+        RAISERROR(@ErrMsg, @ErrSev, 1)
+    END CATCH
+END
+GO
+-- 3
+ALTER PROCEDURE CHECK_STUDENT
+    @rollNo CHAR(8),
+    @name VARCHAR(50)  OUTPUT,
+    @email VARCHAR(50)  OUTPUT,
+    @status BIT OUTPUT,
+    @password VARCHAR(255) OUTPUT,
+    @current_semester INT OUTPUT
+AS
+BEGIN
+    SET NOCOUNT ON
+    SET XACT_ABORT ON
+    BEGIN TRANSACTION      
+    BEGIN TRY
+        IF EXISTS (SELECT 1 FROM Students WHERE roll_no = @rollNo)
+        BEGIN
+            SELECT
+                @name = name,
+                @email = email,
+                @password = password,
+                @current_semester = current_semester
+            FROM Students
+            WHERE roll_no = @rollNo
+            SET @status = 1
+        END
+        ELSE
+        BEGIN
+            SET @name = NULL
+            SET @email = NULL
+            SET @password = NULL
+            SET @current_semester = NULL
+            SET @status = 0
+        END
+        ROLLBACK TRANSACTION
+    END TRY
+    BEGIN CATCH
+        IF @@TRANCOUNT > 0
+            ROLLBACK TRANSACTION
+        DECLARE @ErrMsg NVARCHAR(4000) = ERROR_MESSAGE()
+        DECLARE @ErrSev INT = ERROR_SEVERITY()
+        RAISERROR(@ErrMsg, @ErrSev, 1)
+    END CATCH
+END
+GO
