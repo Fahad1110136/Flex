@@ -979,7 +979,30 @@ SELECT roll_no, section_id FROM Students WHERE roll_no = '23L-0533'
 SELECT * FROM Course_Sections WHERE course_code = 'EN102'
 -- reset registration
 DROP TABLE Registration_period
--- Transaction used
+GO
+-- Trigger
+CREATE TRIGGER TR_IncrementSemesterOnRegistrationEnd
+ON Registration_Period
+AFTER UPDATE
+AS
+BEGIN
+    SET NOCOUNT ON
+    IF EXISTS (
+        SELECT 1
+        FROM inserted i
+        JOIN deleted d ON i.period_id = d.period_id
+        WHERE d.is_active = 1 AND i.is_active = 0
+    )
+    BEGIN
+        -- If so, increment the semester for all eligible students
+        UPDATE Students
+        SET current_semester = current_semester + 1
+        WHERE current_semester < 8
+        PRINT 'Semester incremented for all eligible students due to registration period ending.'
+    END
+END
+GO
+-- Transaction
 -- 1
 GO
 ALTER PROCEDURE GET_ENROLLED_COURSES
